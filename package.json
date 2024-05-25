@@ -1,0 +1,35 @@
+{
+  "name": "kostebek",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --env-file=.env index.js",
+    "start": "node --env-file=.env index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LegendMan46/kostebek.git"
+  },
+  "author": "Cibrx1453",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LegendMan46/kostebek/issues"
+  },
+  "homepage": "https://github.com/LegendMan46/kostebek#readme",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "express-session": "1.17.3",
+    "express-session-sqlite": "^2.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "path": "^0.12.7",
+    "puppeteer": "^22.10.0",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7",
+    "validator": "^13.12.0"
+  }
+}

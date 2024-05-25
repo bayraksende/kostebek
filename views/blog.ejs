@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/style/home_style.css">
+    <link rel="icon" href="/img/logo.png">
+    <style>
+        body, html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /*display: flex;*/
+            flex-direction: column;
+            align-items: center;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 1px 16px;
+            height: 1000px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidebar {padding-top: 15px;}
+            .sidebar a {font-size: 18px;}
+        }
+
+        .powered-by {
+            text-align: center;
+            margin: 20px 0;
+            color: rgb(56, 56, 56);
+            font-size: 14px;
+        }
+
+
+
+        .blog-post {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+
+        header, .content, footer {
+            width: 80%;
+            max-width: 1200px; /* Maksimum genişlik */
+            margin: 20px auto;
+        }
+        header {
+            text-align: center;
+        }
+        .button-panel {
+            display: flex;
+            justify-content: center;
+            border: 1px solid #222323;
+            background-color: #222323;
+        }
+
+
+
+        .button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #222323;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .button:hover {
+            background-color: #3f3e3e;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <a href="/chat"><img src="/img/live-chat.png" alt="Chat"></a>
+        <a href="/blog"><img src="/img/blog_icon.png" alt="Blog"></a>
+        <a href="/my-account"><img src="/img/account_icon.png" alt="Profile"></a>
+        <a href="/logout"><img src="/img/logout.png" alt="Logout"></a>
+    </div>
+    
+    <header>
+        <img src="/img/blog_logo.png" alt="Logo" style="max-width: 100%; height: auto;">
+    </header>
+
+    <div id="content" class="content">
+        <div class="button-panel">
+            <a href="#" class="button">Ana Sayfa</a>
+            <a href="#" class="button">Siber Güvenlik</a>
+            <a href="#" class="button">Linux & Open Source</a>
+            <a href="#" class="button">Hakkımda</a>
+            <a href="/blog/new" class="button"><img src="/img/add.png" alt="add_new" width="15px" height="15px"></a>
+        </div>
+        <div id="blog-list">
+            <!-- Blog listesi burada dinamik olarak oluşturulacak -->
+        </div>
+    </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer>
+        <p style="text-align: center;">&copy; 2024 Cibrx Security. Tüm hakları saklıdır.</p>
+    </footer> 
+
+    <script src="https://rawgit.com/leizongmin/js-xss/master/dist/xss.js"></script>
+    <script>
+        // Verileri yükleme fonksiyonu
+        function loadBlogs() {
+            fetch('/blog/get-content')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    const blogListDiv = document.getElementById('blog-list');
+                    blogListDiv.innerHTML = ''; // Önceki içeriği temizle
+                    data.forEach(blog => {
+                        const blogDiv = document.createElement('div');
+                        blogDiv.className = 'blog-post';
+                        
+                        const image = document.createElement('img');
+                        image.src = blog.image;
+                        image.style = "width: 50px; height: 50px;"
+                        image.alt = 'Blog Image';
+                        image.style.maxWidth = '100%';
+                        blogDiv.appendChild(image);  
+                        // Başlık
+                        const title = document.createElement('h1');
+                        title.textContent = blog.title;
+                        blogDiv.appendChild(title);
+    
+                        // İçerik
+                        const content = document.createElement('p');
+                        content.textContent = blog.content;
+                        blogDiv.appendChild(content);
+    
+                        // Yazar
+                        const author = document.createElement('p');
+                        author.textContent = blog.author;
+                        blogDiv.appendChild(author);
+    
+                        // Resim
+
+    
+                        // Oluşturulma Tarihi
+                        const date = document.createElement('p');
+                        date.textContent = new Date(blog.createdAt).toLocaleDateString('tr-TR');
+                        blogDiv.appendChild(date);
+    
+                        blogListDiv.appendChild(blogDiv);
+                    });
+                })
+                .catch(error => console.error('Hata:', error));
+        }
+    
+        // Sayfa yüklendiğinde verileri yükle
+        document.addEventListener('DOMContentLoaded', loadBlogs);
+    </script>
+  
+</body>
+</html>
