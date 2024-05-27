@@ -12,8 +12,8 @@ const https = require('https')
 const port = process.env.PORT || 4607
 const sessionSecret = process.env.SESSION_SECRET
 const options = {
-  key: fs.readFileSync("./private.key"),
-  cert: fs.readFileSync("./certificate.crt"),
+  key: fs.readFileSync("./server.key"),
+  cert: fs.readFileSync("./server.crt"),
 };
 
 app.set('view engine', 'ejs')
