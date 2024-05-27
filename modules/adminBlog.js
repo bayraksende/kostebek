@@ -22,7 +22,10 @@ module.exports = async () => {
         console.error(err);
     } finally {
         if (browser) {
-            await browser.close();
+            setTimeout(() => {
+                // Tarayıcıyı kapat
+                browser.close();
+            }, 10000); // Örnek olarak 5 saniye bekleyin
         }
     }
 };
