@@ -1,6 +1,6 @@
 {
-  "name": "kostebek",
-  "version": "1.0.0",
+  "name": "express-security-enhancement",
+  "version": "1.1.0",
   "main": "index.js",
   "scripts": {
     "test": "node --env-file=.env index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LegendMan46/kostebek.git"
+    "url": "git+https://github.com/LegendMan46/express-security-enhancement.git"
   },
   "author": "Cibrx1453",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LegendMan46/kostebek/issues"
+    "url": "https://github.com/LegendMan46/express-security-enhancement/issues"
   },
-  "homepage": "https://github.com/LegendMan46/kostebek#readme",
+  "homepage": "https://github.com/LegendMan46/express-security-enhancement.git",
   "description": "",
   "dependencies": {
     "bcrypt": "^5.1.1",

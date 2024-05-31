@@ -129,17 +129,17 @@
                         blogDiv.appendChild(image);  
                         // Başlık
                         const title = document.createElement('h1');
-                        title.textContent = blog.title;
+                        title.innerHTML = blog.title;
                         blogDiv.appendChild(title);
     
                         // İçerik
                         const content = document.createElement('p');
-                        content.textContent = blog.content;
+                        content.innerHTML = blog.content;
                         blogDiv.appendChild(content);
     
                         // Yazar
                         const author = document.createElement('p');
-                        author.textContent = blog.author;
+                        author.innerHTML = blog.author;
                         blogDiv.appendChild(author);
     
                         // Resim
@@ -147,7 +147,7 @@
     
                         // Oluşturulma Tarihi
                         const date = document.createElement('p');
-                        date.textContent = new Date(blog.createdAt).toLocaleDateString('tr-TR');
+                        date.innerHTML = new Date(blog.createdAt).toLocaleDateString('tr-TR');
                         blogDiv.appendChild(date);
     
                         blogListDiv.appendChild(blogDiv);

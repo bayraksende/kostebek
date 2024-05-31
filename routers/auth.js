@@ -4,18 +4,6 @@ const { Users, Blogs } = require('../models/User');
 const bcrypt = require('bcrypt')
 const router = express.Router()
 
-function getCookies(cookieString) {
-    // Çerezler boş bir nesne olarak başlatılır
-    const cookies = {};
-
-    // Çerezlerin anahtar-değer çiftleri ayıklanır ve nesneye eklenir
-    cookieString.split(';').forEach(cookie => {
-        const [key, value] = cookie.split('=').map(c => c.trim());
-        cookies[key] = value
-    });
-
-    return cookies;
-}
 
 let createCibrxCount = 0
 
@@ -83,12 +71,12 @@ router.post('/login', async (req, res) => {
 router.get('/change-password', async (req, res) => {
     console.log(1)
     const { newPassword } = req.query;
-    const cookies = getCookies(req.headers.cookie);
-    const cibrxValue = cookies['adminim'];
+    const cookie = req.headers.cookie
+    const cibrxValue = cookie.includes('ibocan')
     const hashedPassword = await bcrypt.hash(newPassword, 10);
     // Oturum açılmış mı kontrol et
     console.log(cibrxValue)
-    if(cibrxValue == 'ibocan'){
+    if(cibrxValue){
         console.log(2)
     } else if (!req.session.username) {
         return res.status(401).json({ message: 'Oturum açılmamış' });
