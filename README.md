@@ -1,7 +1,7 @@
 
 
 ### bayraksende ctf'24 final turu
-### Köstebel
+### Köstebek
 
 |    |  |
 | ------------- |:-------------:|
